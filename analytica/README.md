@@ -38,37 +38,45 @@ Utilizando React, el dashboard ofrece una interfaz de usuario intuitiva y person
 ### `npm start`
 
 ## Estructura del Proyecto
-analytica/
-├── public/
-│   └── index.html
-├── src/
-│   ├── components/
-│   │   ├── GoogleAdsData.jsx
-│   │   ├── Header.jsx
-│   │   └── MetricsDisplay.jsx
-│   │   └── Summary.jsx
-│   ├── config/
-│   │   └── OAuth.jsx
-│   ├── context/
-│   │   ├── DataLoaderProvider.jsx
-│   ├── hooks/
-│   │   └── UseDataLoader.jsx
-│   ├── layout/
-│   │   └── Layout.jsx
-│   ├── pages/
-│   │   └── Home.jsx
-│   └── App.css
-│   └── App.jsx
-│   └── App.test.js
-│   └── index.js
-├── index.html
-├── package-lock.json
-├── package.json
-├── postcss.config.js
-└── README.md
+![Estructura del Proyecto](public/assets/Estructura.png)
 
 ## Consideraciones de Diseño
 - **Esquema de color:** Se utilizó una paleta de colores pasteles para crear conrastes a la combinacio y lograr una estetica agradable a la vista.
 - **Tipografía:** Se seleccionaron fuentes basicas para mejorar la legibilidad y la jerarquía visual.
 - **Diseño responsivo:** Se utilizó Tailwind y para las graficas Chart.js, y Recharts, para garantizar que el dashboard se adapte a diferentes tamaños de pantalla.
+
+## Deployment
+https://inter-analytica-dash.vercel.app/
+
+
+## Despliegue en Vercel
+
+### Preparación Local:
+
+- Asegúrate de tener instalado:
+Node.js y npm (o yarn)
+Vercel CLI: `npm install -g vercel`
+- Verifica el archivo package.json:
+Asegúrate de que las dependencias estén actualizadas y que los scripts de build y start estén correctamente configurados.
+- Crea un .vercel:
+Este archivo (si no existe) contiene la configuración específica para Vercel, como el framework utilizado, el directorio de salida y otras opciones.
+
+### Inicialización de Vercel (si es necesario):
+
+En la terminal, dentro del directorio de tu proyecto: `vercel`
+- Sigue las instrucciones de Vercel para vincular tu proyecto a un proyecto existente o crear uno nuevo.
+  
+### Configuración de Variables de Entorno:
+- Vercel Dashboard:
+  - Accede a tu proyecto en el dashboard de Vercel.
+  - Busca la sección de "Variables de entorno".
+  - Verifica que las variables de entorno existentes sean correctas y estén configuradas para el entorno de producción.
+  - Añade cualquier variable de entorno nueva que sea necesaria para tu aplicación.
+  
+### Despligue
+- Despliegue inicial `vercel`
+- Despliegue posteriores `vercel --prod`
+- Despliegue automático:
+Configura un despliegue automático en Vercel para que cada push a tu repositorio principal genere un nuevo despliegue.
+
 
