@@ -38,8 +38,6 @@ Utilizando React, el dashboard ofrece una interfaz de usuario intuitiva y person
 
 ### `npm start`
 
-## Estructura del Proyecto
-![Estructura del Proyecto](public/assets/Estructura.png)
 
 ## Consideraciones de Diseño
 - **Esquema de color:** Se utilizó una paleta de colores pasteles para crear conrastes a la combinacio y lograr una estetica agradable a la vista.
