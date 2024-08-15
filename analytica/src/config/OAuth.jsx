@@ -3,14 +3,12 @@ import CryptoJS from 'crypto-js';
 
 const authenticate = () => {
   const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code&scope=${process.env.REACT_APP_SCOPE}`;
-
   window.location.href = authUrl;
 };
 
 const handleLogout = () => {
   localStorage.removeItem('token');
-  localStorage.removeItem('isLoggedIn'); // Remove login state flag
-  window.location.href = '/'; // Redirect to root path on logout
+  window.location.href = '/';
 };
 
 const OAuth2 = ({ setAuthenticated }) => {
@@ -18,18 +16,20 @@ const OAuth2 = ({ setAuthenticated }) => {
 
   useEffect(() => {
     const hash = window.location.hash;
+    console.log('Hash:', hash); // Verifica el hash de la URL
     if (hash) {
       const token = new URLSearchParams(hash.replace('#', '?')).get(
         'access_token'
       );
+      console.log('Token:', token); // Verifica si se obtiene el token
       if (token) {
         // Encriptar el token
         const encryptedToken = CryptoJS.AES.encrypt(
           token,
           process.env.REACT_APP_SECRET_KEY
         ).toString();
+        console.log('Encrypted Token:', encryptedToken); // Verifica el token encriptado
         localStorage.setItem('token', encryptedToken);
-        localStorage.setItem('isLoggedIn', true); // Set login state flag
         setAuthenticated(true);
         window.location.hash = ''; // Limpia el hash de la URL
       } else {
@@ -37,6 +37,7 @@ const OAuth2 = ({ setAuthenticated }) => {
       }
     } else {
       const storedToken = localStorage.getItem('token');
+      console.log('Stored Token:', storedToken); // Verifica el token almacenado
       if (storedToken) {
         try {
           const bytes = CryptoJS.AES.decrypt(
@@ -44,6 +45,7 @@ const OAuth2 = ({ setAuthenticated }) => {
             process.env.REACT_APP_SECRET_KEY
           );
           const decryptedToken = bytes.toString(CryptoJS.enc.Utf8);
+          console.log('Decrypted Token:', decryptedToken); // Verifica el token desencriptado
           if (decryptedToken) {
             setAuthenticated(true);
           } else {
@@ -51,6 +53,7 @@ const OAuth2 = ({ setAuthenticated }) => {
           }
         } catch (e) {
           setError('Error decrypting token');
+          console.error('Decryption Error:', e); // Verifica errores de desencriptación
         }
       }
     }

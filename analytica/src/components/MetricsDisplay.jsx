@@ -13,8 +13,9 @@ import {
   Pie,
   Cell,
 } from 'recharts';
-import { useContext } from 'react';
+
 import { DataContext } from '../context/DataLoaderProvider';
+import { useContext } from 'react';
 
 const MetricsDisplay = () => {
   const { metricsData, loading, error } = useContext(DataContext);

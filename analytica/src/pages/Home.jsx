@@ -24,7 +24,7 @@ const Home = () => {
         </>
       ) : (
         <div className='py-3 flex flex-col items-center justify-center'>
-          <h3 className='py-6'>
+          <h3>
             To see information about your campaigns, authenticate with Google
           </h3>
         </div>
