@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import CryptoJS from 'crypto-js';
 
 const authenticate = () => {
   const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code&scope=${process.env.REACT_APP_SCOPE}`;
@@ -23,13 +22,8 @@ const OAuth2 = ({ setAuthenticated }) => {
       );
       console.log('Token:', token); // Verifica si se obtiene el token
       if (token) {
-        // Encriptar el token
-        const encryptedToken = CryptoJS.AES.encrypt(
-          token,
-          process.env.REACT_APP_SECRET_KEY
-        ).toString();
-        console.log('Encrypted Token:', encryptedToken); // Verifica el token encriptado
-        localStorage.setItem('token', encryptedToken);
+        // Guardar el token directamente en localStorage
+        localStorage.setItem('token', token);
         setAuthenticated(true);
         window.location.hash = ''; // Limpia el hash de la URL
       } else {
@@ -39,22 +33,10 @@ const OAuth2 = ({ setAuthenticated }) => {
       const storedToken = localStorage.getItem('token');
       console.log('Stored Token:', storedToken); // Verifica el token almacenado
       if (storedToken) {
-        try {
-          const bytes = CryptoJS.AES.decrypt(
-            storedToken,
-            process.env.REACT_APP_SECRET_KEY
-          );
-          const decryptedToken = bytes.toString(CryptoJS.enc.Utf8);
-          console.log('Decrypted Token:', decryptedToken); // Verifica el token desencriptado
-          if (decryptedToken) {
-            setAuthenticated(true);
-          } else {
-            setError('Invalid token');
-          }
-        } catch (e) {
-          setError('Error decrypting token');
-          console.error('Decryption Error:', e); // Verifica errores de desencriptación
-        }
+        // Token encontrado, autenticado
+        setAuthenticated(true);
+      } else {
+        setError('No token found');
       }
     }
   }, [setAuthenticated]);

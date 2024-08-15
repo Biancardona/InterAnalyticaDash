@@ -7,10 +7,10 @@ import { useState, useEffect } from 'react';
 const Home = () => {
   const [isAuthenticated, setAuthenticated] = useState(false);
 
-  // Check for persisted login state on initial render
+  // Check for persisted authentication state on initial render
   useEffect(() => {
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
-    if (isLoggedIn) {
+    const token = localStorage.getItem('token');
+    if (token) {
       setAuthenticated(true);
     }
   }, []);
