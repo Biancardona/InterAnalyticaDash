@@ -9,7 +9,8 @@ const authenticate = () => {
 
 const handleLogout = () => {
   localStorage.removeItem('token');
-  window.location.href = '/';
+  localStorage.removeItem('isLoggedIn'); // Remove login state flag
+  window.location.href = '/'; // Redirect to root path on logout
 };
 
 const OAuth2 = ({ setAuthenticated }) => {
@@ -22,13 +23,15 @@ const OAuth2 = ({ setAuthenticated }) => {
         'access_token'
       );
       if (token) {
-        //Encriptar el token
+        // Encriptar el token
         const encryptedToken = CryptoJS.AES.encrypt(
           token,
           process.env.REACT_APP_SECRET_KEY
         ).toString();
         localStorage.setItem('token', encryptedToken);
+        localStorage.setItem('isLoggedIn', true); // Set login state flag
         setAuthenticated(true);
+        window.location.hash = ''; // Limpia el hash de la URL
       } else {
         setError('Error retrieving token');
       }

@@ -2,10 +2,19 @@ import GoogleAdsData from '../components/GoogleAdsData';
 import MetricsDisplay from '../components/MetricsDisplay';
 import Summary from '../components/Summary';
 import OAuth2 from '../config/OAuth';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Home = () => {
   const [isAuthenticated, setAuthenticated] = useState(false);
+
+  // Check for persisted login state on initial render
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    if (isLoggedIn) {
+      setAuthenticated(true);
+    }
+  }, []);
+
   return (
     <div>
       <OAuth2 setAuthenticated={setAuthenticated} />
