@@ -1,0 +1,26 @@
+{
+  "pageViews": [
+    { "date": "2024-08-01", "views": 300, "uniqueVisitors": 200 },
+    { "date": "2024-08-02", "views": 450, "uniqueVisitors": 320 },
+    { "date": "2024-08-03", "views": 433, "uniqueVisitors": 290 },
+    { "date": "2024-08-04", "views": 500, "uniqueVisitors": 400 }
+  ],
+  "sessions": [
+    { "date": "2024-08-01", "sessions": 200, "bounceRate": 0.35, "averageSessionDuration": 180 },
+    { "date": "2024-08-02", "sessions": 300, "bounceRate": 0.40, "averageSessionDuration": 210 },
+    { "date": "2024-08-03", "sessions": 275, "bounceRate": 0.37, "averageSessionDuration": 190 },
+    { "date": "2024-08-04", "sessions": 350, "bounceRate": 0.42, "averageSessionDuration": 200 }
+  ],
+  "demographics": {
+    "age": [
+      { "range": "18-24", "percentage": 25, "averageIncome": 30000 },
+      { "range": "25-34", "percentage": 40, "averageIncome": 45000 },
+      { "range": "35-44", "percentage": 20, "averageIncome": 60000 },
+      { "range": "45-54", "percentage": 15, "averageIncome": 70000 }
+    ],
+    "gender": [
+      { "type": "male", "percentage": 55, "averagePurchaseValue": 200 },
+      { "type": "female", "percentage": 45, "averagePurchaseValue": 180 }
+    ]
+  }
+}
