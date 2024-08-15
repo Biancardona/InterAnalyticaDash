@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 
 const authenticate = () => {
-  const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code&scope=${process.env.REACT_APP_SCOPE}`;
+  const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=token&scope=${process.env.REACT_APP_SCOPE}`;
   window.location.href = authUrl;
 };
 
