@@ -62,17 +62,12 @@ const OAuth2 = ({ setAuthenticated }) => {
   return (
     <div className='py-10 flex flex-col items-center justify-center h-auto'>
       {!localStorage.getItem('token') ? (
-        <div className='py-3 flex flex-col items-center justify-center'>
-          <h3 className='py-6'>
-            To see information about your campaigns, authenticate with Google
-          </h3>
-          <button
-            onClick={authenticate}
-            className='px-6 py-4 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-2 transition duration-200'
-          >
-            Authenticate with Google
-          </button>
-        </div>
+        <button
+          onClick={authenticate}
+          className='px-6 py-4 bg-blue-600 text-white rounded-md shadow-md hover:bg-blue-700 focus:ring-blue-500 focus:ring-offset-2 transition duration-200'
+        >
+          Authenticate with Google
+        </button>
       ) : (
         <button
           onClick={handleLogout}
