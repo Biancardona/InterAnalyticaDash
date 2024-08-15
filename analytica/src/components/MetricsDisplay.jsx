@@ -21,7 +21,13 @@ const MetricsDisplay = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
-  const { pageViews, sessions, demographics } = metricsData;
+  // Proporciona valores predeterminados para evitar errores si metricsData es null o undefined
+  const {
+    pageViews = [],
+    sessions = [],
+    demographics = { edad: [], gender: [] },
+  } = metricsData || {};
+
   return (
     <div className='container mx-auto py-8'>
       <h2 className='text-3xl font-bold mb-6 text-center'>Metrics Data</h2>
