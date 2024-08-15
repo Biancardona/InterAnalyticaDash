@@ -36,7 +36,7 @@ const OAuth2 = ({ setAuthenticated }) => {
         // Token encontrado, autenticado
         setAuthenticated(true);
       } else {
-        setError('No token found');
+        console.log('No token found');
       }
     }
   }, [setAuthenticated]);
