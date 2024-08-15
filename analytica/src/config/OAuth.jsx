@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
+import CryptoJS from 'crypto-js';
 
 const authenticate = () => {
-  const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=token&scope=${process.env.REACT_APP_SCOPE}`;
+  const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${process.env.REACT_APP_CLIENT_ID}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code&scope=${process.env.REACT_APP_SCOPE}`;
 
   window.location.href = authUrl;
 };
@@ -21,16 +22,33 @@ const OAuth2 = ({ setAuthenticated }) => {
         'access_token'
       );
       if (token) {
-        localStorage.setItem('token', token);
+        //Encriptar el token
+        const encryptedToken = CryptoJS.AES.encrypt(
+          token,
+          process.env.REACT_APP_SECRET_KEY
+        ).toString();
+        localStorage.setItem('token', encryptedToken);
         setAuthenticated(true);
-        console.log('Token stored in localStorage:', token);
       } else {
         setError('Error retrieving token');
       }
     } else {
       const storedToken = localStorage.getItem('token');
       if (storedToken) {
-        setAuthenticated(true);
+        try {
+          const bytes = CryptoJS.AES.decrypt(
+            storedToken,
+            process.env.REACT_APP_SECRET_KEY
+          );
+          const decryptedToken = bytes.toString(CryptoJS.enc.Utf8);
+          if (decryptedToken) {
+            setAuthenticated(true);
+          } else {
+            setError('Invalid token');
+          }
+        } catch (e) {
+          setError('Error decrypting token');
+        }
       }
     }
   }, [setAuthenticated]);

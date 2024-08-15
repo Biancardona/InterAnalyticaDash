@@ -1,70 +1,74 @@
-# Getting Started with Create React App
+# Interactive Analytics Dashboard
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Introduccion
+Este dashboard analítico interactivo proporciona una visión integral del rendimiento de diversas campañas de marketing, combinando datos de Analytics. 
+Utilizando React, el dashboard ofrece una interfaz de usuario intuitiva y personalizable que permite a los usuarios explorar los datos de manera visual y extraer insights valiosos.
 
-## Available Scripts
+## Características Clave
+- **Visualizaciones interactivas:** Gráficos de barras, líneas y pastel para visualizar métricas clave como impresiones, clics, conversiones, vistas de página, sesiones y demografía.
+- **Diseño responsivo:** El dashboard se adapta a diferentes tamaños de pantalla, garantizando una experiencia de usuario óptima en dispositivos de escritorio y móviles.
+- **Personalización:** Los usuarios pueden filtrar y segmentar los datos para obtener insights más específicos.
+- **Fuente de Datos:** 
+  - Google Analytics: Datos simulados proporcionados en un archivo JSON.
 
-In the project directory, you can run:
+## Tecnologías Utilizadas
+- **React:** Framework de JavaScript para construir interfaces de usuario.
+- **Biblioteca de gráficos:** Chart.js, Recharts, para crear visualizaciones.
+- **Biblioteca de estilos:** Tailwind CSS, para diseñar la interfaz de usuario.
+- **Axios:** Para realizar las solicitudes a las APIs.
+- **Gestor de estado:** Context para manejar el estado de la aplicación.
+
+
+## Configuración
+1. Clonar el repositorio:
+   
+### `git clone https://[tu_repositorio].git`
+
+2. Instalar dependencias:
+
+### `npm install`
+
+3. Configurar credenciales de API:
+
+- Crear una cuenta de desarrollador en Google Ads API y obtener las credenciales OAuth2.
+- Configurar las credenciales en el archivo de configuración de la aplicación.
+
+4. Iniciar el servidor de desarrollo:
 
 ### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Estructura del Proyecto
+analytica/
+├── public/
+│   └── index.html
+├── src/
+│   ├── components/
+│   │   ├── GoogleAdsData.jsx
+│   │   ├── Header.jsx
+│   │   └── MetricsDisplay.jsx
+│   │   └── Summary.jsx
+│   ├── config/
+│   │   └── OAuth.jsx
+│   ├── context/
+│   │   ├── DataLoaderProvider.jsx
+│   ├── hooks/
+│   │   └── UseDataLoader.jsx
+│   ├── layout/
+│   │   └── Layout.jsx
+│   ├── pages/
+│   │   └── Home.jsx
+│   └── App.css
+│   └── App.jsx
+│   └── App.test.js
+│   └── index.js
+├── index.html
+├── package-lock.json
+├── package.json
+├── postcss.config.js
+└── README.md
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Consideraciones de Diseño
+- **Esquema de color:** Se utilizó una paleta de colores pasteles para crear conrastes a la combinacio y lograr una estetica agradable a la vista.
+- **Tipografía:** Se seleccionaron fuentes basicas para mejorar la legibilidad y la jerarquía visual.
+- **Diseño responsivo:** Se utilizó Tailwind y para las graficas Chart.js, y Recharts, para garantizar que el dashboard se adapte a diferentes tamaños de pantalla.
 
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
