@@ -14,7 +14,11 @@ const Home = () => {
           <GoogleAdsData />
         </>
       ) : (
-        <p>Por favor, autentícate para ver los datos de las campañas.</p>
+        <div className='py-3 flex flex-col items-center justify-center'>
+          <h3 className='py-6'>
+            To see information about your campaigns, authenticate with Google
+          </h3>
+        </div>
       )}
       <div>
         <MetricsDisplay />
