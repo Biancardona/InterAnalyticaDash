@@ -71,7 +71,7 @@ const MetricsDisplay = () => {
         <div className='bg-white shadow-lg rounded-lg p-6'>
           <h3 className='text-xl font-semibold mb-4'>Demographics by age</h3>
           <ResponsiveContainer width='100%' height={300}>
-            <BarChart data={demographics.edad}>
+            <BarChart data={demographics.age}>
               <CartesianGrid strokeDasharray='3 3' />
               <XAxis dataKey='range' />
               <YAxis />
