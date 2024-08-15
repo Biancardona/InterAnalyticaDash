@@ -13,9 +13,8 @@ import {
   Pie,
   Cell,
 } from 'recharts';
-
-import { DataContext } from '../context/DataLoaderProvider';
 import { useContext } from 'react';
+import { DataContext } from '../context/DataLoaderProvider';
 
 const MetricsDisplay = () => {
   const { metricsData, loading, error } = useContext(DataContext);
@@ -66,7 +65,7 @@ const MetricsDisplay = () => {
         <div className='bg-white shadow-lg rounded-lg p-6'>
           <h3 className='text-xl font-semibold mb-4'>Demographics by age</h3>
           <ResponsiveContainer width='100%' height={300}>
-            <BarChart data={demographics.age}>
+            <BarChart data={demographics.edad}>
               <CartesianGrid strokeDasharray='3 3' />
               <XAxis dataKey='range' />
               <YAxis />
