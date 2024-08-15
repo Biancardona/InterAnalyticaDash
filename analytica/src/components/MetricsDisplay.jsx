@@ -13,10 +13,11 @@ import {
   Pie,
   Cell,
 } from 'recharts';
-import useDataLoader from '../hooks/useDataLoader';
+import { useContext } from 'react';
+import { DataContext } from '../context/DataLoaderProvider';
 
 const MetricsDisplay = () => {
-  const { metricsData, loading, error } = useDataLoader();
+  const { metricsData, loading, error } = useContext(DataContext);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 

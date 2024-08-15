@@ -9,10 +9,12 @@ const Home = () => {
   return (
     <div>
       <OAuth2 setAuthenticated={setAuthenticated} />
-      {isAuthenticated && (
+      {isAuthenticated ? (
         <>
           <GoogleAdsData />
         </>
+      ) : (
+        <p>Por favor, autentícate para ver los datos de las campañas.</p>
       )}
       <div>
         <MetricsDisplay />
