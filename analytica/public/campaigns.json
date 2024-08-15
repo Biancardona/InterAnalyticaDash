@@ -13,6 +13,13 @@
       "clics": 300,
       "conversiones": 50,
       "costo": 350
+    },
+    {
+      "nombre": "Campaña 3",
+      "impresiones": 890,
+      "clics": 102,
+      "conversiones": 30,
+      "costo": 150
     }
   ]
 }
