@@ -9,44 +9,49 @@ const GoogleAdsData = () => {
   if (loading) return <p>Loading...</p>;
   if (error) return <p>{error}</p>;
 
-  const campaigns = googleAdsData?.campañas;
-
-  const chartData = {
-    labels: campaigns?.map((campaign) => campaign.nombre) || [],
-    datasets: [
-      {
-        label: 'Impressions',
-        data: campaigns?.map((campaign) => campaign.impresiones) || [],
-        backgroundColor: 'rgba(75, 192, 192, 0.6)',
-      },
-      {
-        label: 'Clicks',
-        data: campaigns?.map((campaign) => campaign.clics) || [],
-        backgroundColor: 'rgba(153,102,255,0.6)',
-      },
-      {
-        label: 'Conversions',
-        data: campaigns?.map((campaign) => campaign.conversiones) || [],
-        backgroundColor: 'rgba(255,159,64,0.6)',
-      },
-    ],
-  };
+  const campaigns = googleAdsData?.campañas || [];
 
   return (
     <div className='container mx-auto p-4'>
       <h1 className='text-3xl font-bold text-center mb-6'>Google Ads Data</h1>
 
-      <div>
-        {campaigns ? (
-          <div className='bg-white shadow-lg rounded-lg p-6'>
-            <Bar
-              data={chartData}
-              options={{
-                responsive: true,
-                plugins: { legend: { position: 'top' } },
-              }}
-            />
-          </div>
+      <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6'>
+        {campaigns.length > 0 ? (
+          campaigns.map((campaign, index) => {
+            const chartData = {
+              labels: ['Impressions', 'Clicks', 'Conversions'],
+              datasets: [
+                {
+                  label: campaign.nombre,
+                  data: [
+                    campaign.impresiones,
+                    campaign.clics,
+                    campaign.conversiones,
+                  ],
+                  backgroundColor: [
+                    'rgba(75, 192, 192, 0.6)',
+                    'rgba(153,102,255,0.6)',
+                    'rgba(255,159,64,0.6)',
+                  ],
+                },
+              ],
+            };
+
+            return (
+              <div key={index} className='bg-white shadow-lg rounded-lg p-6'>
+                <h2 className='text-xl font-semibold text-center mb-4'>
+                  {campaign.nombre}
+                </h2>
+                <Bar
+                  data={chartData}
+                  options={{
+                    responsive: true,
+                    plugins: { legend: { display: false } },
+                  }}
+                />
+              </div>
+            );
+          })
         ) : (
           <p>No data available</p>
         )}
